@@ -1,0 +1,43 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 400px;
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa; }
+    div#app div { margin-bottom: 20px; }
+    div#blue {color:blue}
+    label { display: block; }
+    input[type=text] { padding: 4px; margin:5px;}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>곱셈</h1>
+    <div id="blue">
+        {{ sum }}
+    </div>
+    <hr />
+    <input type="text" v-model="num1"> <br>
+    <input type="text" v-model="num2">
+    <button type="button" v-on:click="multiply">곱셈</button>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        num1:0,
+        num2:0,
+        sum:0
+      },
+      methods:  {
+        multiply(){
+            this.sum=this.num1*this.num2
+       }
+    }
+    })
+   </script>
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="todo1.css">
+</head>
+<body>
+  <div id="app">
+    <h1>할 일</h1>
+    <ul>
+      <li v-for="(todo,index) in todoList">
+        <input type="checkbox" v-model="checked[index]">
+        {{ todo }}
+      </li>
+    </ul>
+    <input type="text" v-model="todo">
+    <button type="button" v-on:click="addTodo">할일 추가</button>
+    <button type="button" v-on:click="deleteTodo">삭제</button>
+
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        todoList: [ "과제", "시험공부", "코딩훈련" ],
+        todo: "",
+        checked: []
+      },
+      methods: {
+        addTodo: function(){
+            this.todoList.push(this.todo)
+            this.todo=""
+        },
+        deleteTodo: function(){  
+            let list = []; //빈 리스트를 선언
+            for (let i = 0; i < this.todoList.length; ++i) //todolist의 길이까지 반복
+                if (!this.checked[i]) //체크되지 않은 항목들이라면 
+                    list.push(this.todoList[i]); //빈 배열에 채운다.
+            this.todoList = list; //그 체크되지 않은 배열을 현재 배열에 대입.
+            this.checked = []; //빈배열로 초기화
+
+        }
+      }
+    })
+   </script>
+</body>
+</html>
+

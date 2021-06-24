@@ -1,0 +1,42 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { margin: 20px auto; padding: 20px; width: 300px;
+          border: 1px solid gray; box-shadow: 5px 5px 5px #aaa; }
+    select {padding: 5px;font-size: 15pt; width:150px;margin:10px}
+  </style>
+</head>
+<body>
+  <div id="app" :style="{backgroundColor:color, height:h}">
+      <h1>Select</h1>
+      <label>
+          <input type="radio" value="red" v-model="color">red
+      </label>
+      <label>
+        <input type="radio" value="yellow" v-model="color">yellow
+    </label>
+    <label>
+        <input type="radio" value="gray" v-model="color">gray
+    </label>
+    <label>
+        <input type="radio" value="pink" v-model="color">pink
+    </label>
+    <select v-model="h">
+        <option value="200">200</option>
+        <option value="300">300</option>
+        <option value="400">400</option>
+    </select>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        color: "red",
+        h: 200
+      }
+    })
+   </script>
+</body>
+</html>

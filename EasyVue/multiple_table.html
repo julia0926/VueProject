@@ -1,0 +1,33 @@
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 500px;
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa;  }
+    table { border-collapse: collapse; margin-top: 10px; }
+    td { border: 1px solid black; padding: 10px; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model.number="size" />
+    <table>
+      <tr v-for="row in size">
+        <td v-for="col in size">
+          {{ (row - 1) * size + col }}
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        size: 2
+      }
+    })
+   </script>
+</body>
+</html>

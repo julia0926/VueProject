@@ -1,0 +1,28 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+       div#app { margin: 20px auto; padding: 20px; width: 400px;
+       border: 1px solid gray; box-shadow: 5px 5px 5px #aaa; }
+  </style>
+</head>
+<body>
+  <div id="app">
+      <input type="text" v-model="value">
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        value: 2
+      },
+      methods: {
+          plus(){
+              return this.value+=1
+          }
+      }
+    })
+   </script>
+</body>
+</html>

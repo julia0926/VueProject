@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div { border: 1px solid gray; padding: 20px; margin: 20px; }
+    input { padding: 5px; margin-right: 5px; }
+    button { padding: 0.4em 1em; margin-right: 5px; }
+    div#app { padding: 0 30px 30px 30px; margin: 30px auto; max-width: 400px;
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>페이지3</h1>
+    <div :style="{backgroundColor: color}">{{count}}</div>
+    <button type="button" :disabled="value" @click="yellow">노란색</button>
+    <button type="button" :disabled="!value" @click="green">초록색</button>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        value: false,
+        color: "yellow",
+        count: 0
+      },
+      methods:{
+          yellow(){
+            this.color="yellow"
+            this.count++
+            this.value=true
+          },
+          green(){
+              this.color="green"
+              this.count++
+              this.value=false
+          }
+      }
+    })
+   </script>
+</body>
+</html>
+

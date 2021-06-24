@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 350px; 
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa; }
+    input { margin:5px; padding: 5px; width: 200px; }
+    .red {color: red}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <h1>주문</h1>
+      <p>수량 <input type="text" v-model="num" /></p>
+      <p>가격 <input type="text" v-model="price" /></p> <hr>
+      <p>합계 <input type="text" v-model="sum" :class="{red: sum>=10000}"/></p>
+    </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        num: 1,
+        price: 20
+      },
+      computed:{
+        sum : {
+          get() {
+            return this.num * this.price;
+          },
+          set(value) {
+            this.num = value / this.price;
+          }
+        }
+      }
+    })    
+   </script>
+</body>    
+</html>
+

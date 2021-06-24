@@ -1,0 +1,59 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 400px; 
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa;  }
+    table { border-collapse: collapse; margin-top: 20px; }
+    td { padding: 10px; border: 1px solid black; }
+    button { padding: 0.5em 1.5em; }
+    .yellow {background-color: yellow;}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <table>
+        <tr v-for="(time,index) in timeList" @click="click(index)"
+        :class="{yellow: countList[index]}">
+            <td>{{countList[index]}}</td>
+            <td>{{time}}</td>
+        </tr>
+    </table>
+    <button type="button" @click="add">현재시간 추가</button>
+    <p>클릭 횟수 : {{count}}</p>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        count: 0,
+        time: null,
+        timeList: [],
+        countList: [],
+        countIndex: 0
+      },
+      methods:{
+        add(){
+            this.timeList.push(this.time)
+            this.countList.push(this.countIndex)
+            this.count++
+        },
+        click(i){
+            this.countList[i]++
+            this.count++
+            this.$forceUpdate()
+        }
+      },
+      mounted: function() {
+        let callback = () => this.time = moment().format("HH:mm:ss")
+        callback();
+        setInterval(callback, 1000);
+      }
+
+    })
+   </script>
+</body>
+</html>
+

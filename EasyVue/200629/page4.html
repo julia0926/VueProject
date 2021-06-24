@@ -1,0 +1,54 @@
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 500px;
+    border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa;  }
+    table { border-collapse: collapse; }
+    td { border: 1px solid black; padding: 5px; }
+    button { padding: 0.4em 1.5em; margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>person list</h1>
+    <table>
+        <tr>
+            <td>이름</td>
+            <td>나이</td>
+            <td>--</td>
+        </tr>
+        <tr v-for="(person,index) in persons">
+            <td>{{person.name}}</td>
+            <td>{{person.age}}</td>
+            <td><button type="button" @click="remove(index)">삭제</button></td>
+        </tr>
+    </table>
+    <p>이름 : <input type="text" v-model="newVal.name" /></p>
+    <p>나이 : <input type="text" v-model="newVal.age" placeholder="0"/></p>
+    <button type="button" @click="save">저장</button>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        persons: [{name: "홍길동", age: 16},
+                 {name: "임꺽정", age: 17}],
+        newVal: {}
+      },
+      methods:{
+         save(){
+            this.persons.push(this.newVal)
+            this.newVal={}
+         },
+         remove(index){
+             this.persons.splice(index,1)
+         }
+      }
+    })
+   </script>
+</body>
+</html>
+

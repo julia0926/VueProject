@@ -1,0 +1,56 @@
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 500px;
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa;  }
+      table { border-collapse: collapse; }
+    td { border: 1px solid black; padding: 5px; }
+    button { padding: 0.4em 1.5em; margin-top: 5px; }
+    .green {background-color: #bfb;}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>시간 추가 및 클릭시 색상변경</h1>
+    <table>
+        <tr v-for="(t,index) in timeList" @click="addColor(index)" :class="{green: color[index]}">
+            <td>{{color[index]}}</td>
+            <td>{{t}}</td>
+        </tr>
+    </table>
+    <button type="button" @click="addTime">현재시간 추가</button>
+    <h2>클릭 카운트 : {{clickCount}}</h2>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        time: moment().format("HH:mm:ss"),
+        timeList: [],
+        color: [],
+        clickCount: 0,
+        indexCount: 0
+      },
+      mounted(){
+          let callback=()=>this.time = moment().format("HH:mm:ss")
+          setInterval(callback,1000)
+      },
+      methods:{
+        addTime(){
+            this.timeList.push(this.time)
+            this.color.push(this.indexCount)
+        },
+        addColor(i){
+            this.color[i]++
+            this.clickCount++
+            console.log(this.color[i])
+        }
+      }
+    })
+   </script>
+</body>
+</html>

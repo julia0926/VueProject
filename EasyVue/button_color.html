@@ -1,0 +1,38 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { margin: 20px auto; padding: 20px; width: 300px;
+          border: 1px solid gray; box-shadow: 5px 5px 5px #aaa; }
+    select { padding: 5px; font-size: 15pt; width: 150px; margin: 10px; }
+  </style>
+</head>
+<body>
+  <div id="app" v-bind:style="{ backgroundColor: color }">
+      <h1>select</h1>
+      <button type="button" :disabled="showColor" @click="yellow">노란색</button>
+      <button type="button" :disabled="!showColor" @click="green">초록색</button>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        color: "",
+        showColor: false
+      },
+      methods:{
+        yellow(){
+            this.color="#ffa"
+            this.showColor=true
+        },
+        green(){
+            this.color="#bfb"
+            this.showColor=false
+        }
+      }
+    })
+   </script>
+</body>
+</html>
+

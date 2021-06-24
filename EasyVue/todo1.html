@@ -1,0 +1,56 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    h1 { border-bottom: 1px solid gray; }
+    div { padding: 30px; margin: 30px auto; width: 600px;
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa; }
+    li { margin-bottom: 10px; }
+    input[type=text] { padding: 5px;  }
+    button { padding: 0.4em 1.5em; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>할 일</h1>
+    <ul>
+      <li v-for="(todo,index) in todoList" >
+        <input type="checkbox" v-model="checked[index]">
+        {{ todo }}
+      </li>
+    </ul>
+    <input type="text" v-model="todo">
+    <button type="button" @click="addTodo">추가</button>
+    <button type="button" @click="removeTodo">삭제</button>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        todoList: [ "과제", "시험공부", "코딩훈련" ],
+        todo: "",
+        checked: []
+      },
+      methods:{
+        addTodo(){
+          this.todoList.push(this.todo)
+          this.todo=""
+        },
+        removeTodo(){
+          let list=[]
+          for(let i=0;i<this.todoList.length;++i){
+            if(!this.checked[i]){ //체크되지 않은 항목들만 따로 저장해서 리턴 
+              list.push(this.todoList[i])
+            }
+          } //반복문 주의해서 ~~!!~~!~!~!
+            this.todoList=list
+            this.checked=[]
+        }
+      }
+    })
+   </script>
+</body>
+</html>
+

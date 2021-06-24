@@ -1,0 +1,40 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 350px; 
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa; }
+    input { margin:5px; padding: 5px; width: 200px; }
+    .red {color: red}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <h1>합계</h1>
+      <p>from <input type="text" v-model="num" /></p>
+      <p>to <input type="text" v-model="num2" /></p> <hr>
+      <p>{{sum}}</p>
+    </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        num: 1,
+        num2: 20
+      },
+      computed:{
+        sum(){
+          this.final=0
+          for(let i=this.num;i<=this.num2;i++){
+            this.final+=Number(i)
+          }
+          return this.final
+        }
+      }
+    })    
+   </script>
+</body>    
+</html>
+

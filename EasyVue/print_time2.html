@@ -1,0 +1,64 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+      h1 { border-bottom: 1px solid gray; }
+      div { padding: 30px; margin: 30px auto; width: 600px;
+        border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa;
+      }
+      button { padding: 0.4em 1.5em; }
+      table { border-collapse: collapse; margin-bottom: 20px; }
+      td { padding: 5px;  border: 1px solid #aaa; width:100px;}
+      .yellow { background-color: yellow; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>현재시각</h1>
+    <table>
+      <tr v-for="(time,index) in timelist" @click="color(index)" :class="{yellow: count[index]}">
+        <td>{{count[index]}}</td>
+        <td>
+          {{ time }}
+        </td>
+      </tr>
+    </table>
+    <button type="button" v-on:click="plus()">시간 추가</button>
+    <h3>클릭 수 : {{click}}</h3>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        nowtime: moment().format("HH:mm:ss"),
+        timelist:[],
+        click: 0,
+        index: 0, //카운트 인덱스 
+        count: [] //카운트
+      }, //그냥 찍어서만 보여줌
+      methods:  {
+        plus(){
+          this.timelist.push(this.nowtime);
+          this.count.push(this.index) //[0,1,2 ...]
+        },
+        color(i){
+          this.count[i]++
+          this.$forceUpdate()
+          this.click++
+          console.log(count[i])
+        }
+      },
+      mounted: function() {
+        let callback = () => this.nowtime = moment().format("HH:mm:ss")
+        setInterval(callback, 1000);
+      }
+
+    })
+   </script>
+</body>
+</html>
+
+

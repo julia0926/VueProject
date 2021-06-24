@@ -1,0 +1,49 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+      div#app { margin: 20px auto; padding: 20px; width: 300px; height: 420px;
+          border: 1px solid gray; box-shadow: 5px 5px 5px #aaa; }
+    input { padding: 5px; margin:14px}
+    select { width: 150px; margin:10px; padding:5px; font-size:15px;  }
+    label {font-size: 14pt}
+    
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>입력 양식</h1>
+    <input type="text" placeholder="이름을 입력하세요" v-model="name"> <br>
+    <label>
+        <input type="radio" value="male" v-model="sex">남자
+    </label>
+    <label>
+         <input type="radio" value="female" v-model="sex">여자
+    </label>
+    <select v-model="major">
+        <option value="" :value="false" selected disabled hidden>전공을 선택하세요.</option>
+        <option value="소프" >소프트웨어공학과</option>
+        <option value="컴공" >컴퓨터공학과</option>
+    </select><br>
+    <label>
+        <input type="checkbox" :value="true" v-model="value">활성화
+    </label>
+    <hr>
+    <div id="info" v-if="value">
+        <p>이름 : {{name}}</p>
+        <p>성별 : {{sex}}</p>
+        <p>전공 : {{major}}</p>
+        <p>활성화 : {{value}}</p>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        value: false
+      }
+    })
+   </script>
+</body>
+</html>

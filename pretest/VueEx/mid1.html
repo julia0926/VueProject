@@ -1,0 +1,37 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { margin: 20px auto; padding: 20px; width: 300px;
+          border: 1px solid gray; box-shadow: 5px 5px 5px #aaa; }
+    input {margin: 20px auto; width:150px; height:30px}
+    button {height:30px; width: 40px;}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="value">
+    <button type="button" v-on:click="plus" v-model="value">++</button>
+    <button type="button" v-on:click="minus" v-model="value">--</button>
+
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        value:0
+
+      },
+      methods: {
+          plus(){
+            return this.value+=1
+          },
+          minus(){
+            return this.value-=1
+          }
+      }
+    })
+   </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 500px;
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa;  }
+    table { border-collapse: collapse; margin-top: 10px; margin-bottom: 10px;}
+    td { border: 1px solid black; padding: 10px; width: 100px;}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>목록</h1>
+    <table>
+      <tr>
+        <td>번호</td>
+        <td>값</td>
+      </tr>
+      <tr v-for="(val,index) in valueList">
+        <td>{{ index+1 }}</td>
+        <td>{{ val }}</td>
+      </tr>
+    </table>
+    <input type="text" v-model="value" />
+    <button type="button" v-on:click="save">추가</button>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        valueList: [],
+        value: ""
+      },
+      methods: {
+        save(){
+            this.valueList.push(this.value)
+            this.value=""
+        }
+      }
+    })
+   </script>
+</body>
+</html>
+

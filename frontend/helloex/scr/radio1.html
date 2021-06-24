@@ -1,0 +1,47 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+      div#app { margin: 20px auto; padding: 20px; width: 300px;
+          border: 1px solid gray; box-shadow: 5px 5px 5px #aaa; }
+    p { font-size: 15pt }
+    select { width: 150px; margin:10px; padding:5px; font-size:15px;  }
+    label {font-size: 15pt}
+    
+  </style>
+</head>
+<body>
+  <div id="app" v-bind:style="{color: color}">
+    <h1>Select</h1>
+    <p>{{ color }}</p>
+    <hr>
+    <select v-model="color">
+        <option value="#ffa">yellow</option>
+        <option value="#bfb">green</option>
+        <option value="#bbf">blue</option>
+        <option value="#fbb">red</option>    
+    </select> <br>
+    <label>
+        <input type="radio" value="yellow" v-model="color">yellow
+    </label>
+    <label>
+        <input type="radio" value="green" v-model="color">green
+    </label>
+    <label>
+        <input type="radio" value="blue" v-model="color">blue
+    </label>
+    <label>
+        <input type="radio" value="red" v-model="color">red
+    </label>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        color: "yellow"
+      }
+    })
+   </script>
+</body>
+</html>

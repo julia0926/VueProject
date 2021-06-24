@@ -1,0 +1,50 @@
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" type="text/css" href="todo2.css">
+</head>
+<body>
+  <div id="app">
+    <h1>person list</h1>
+    <table>
+      <tr>
+        <td>이름</td>
+        <td>나이</td>
+        <td></td>
+      </tr>
+      <tr v-for="(person,index) in personList">
+        <td>{{ person.name }}</td>
+        <td>{{ person.age }}</td>
+        <td><button type="button" @click="deleteList(index)">삭제</button></td>
+      </tr>
+    </table>
+    <p>이름 : <input type="text" v-model.trim="person.name" /></p>
+    <p>나이 : <input type="text" v-model="person.age" placeholder="0"/></p>
+    <button type="button" v-on:click="addPerson">저장</button>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        personList: [{name: "홍길동",age: 16},
+                    {name: "임꺽정",age: 17}],
+        person: {}
+      },
+      methods: {
+        addPerson: function() {
+          this.personList.push(this.person);
+          this.person = {};
+        },
+        deleteList(i){
+            if(confirm("삭제하시겠습니까?")){
+                this.personList.splice(i,1)
+            }
+        }
+      }
+    })
+   </script>
+</body>
+</html>
+

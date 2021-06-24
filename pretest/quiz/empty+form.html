@@ -1,0 +1,60 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 350px; 
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa; }
+    div#app > div { margin-top: 30px; }
+    label:nth-child(1) { display: inline-block; width: 70px; text-align: right; }
+    input:text { padding: 6px; width: 200px; }
+    div.error { margin-top: 5px; margin-left: 70px; color: red; }
+    div#hello { margin-top: 20px; padding: 20px;
+      background-color: lightGreen; border: 1px solid gray;
+       font-size: 10pt; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>입력 양식</h1>
+    <div>
+      <label>이메일:</label>
+      <input type="text" v-model="email" />
+      <div class="error" v-show="!email" v-model="email">이메일은 필수 항목입니다.</div>    
+    </div>
+    <div>
+      <label>전화번호:</label>
+      <input type="text" v-model="phone" /> 
+      <div class="error" v-show="!phone" v-model="phone">폰번은 필수 항목입니다.</div>    
+    </div>
+    <div>
+      <label>성별:</label>
+      <label><input type="radio" v-model="sex" value="남" />남자</label>
+      <label><input type="radio" v-model="sex" value="여" />여자</label>
+      <div class="error" v-show="!sex" v-model="sex">성별은 필수 항목입니다.</div> 
+    </div>
+    <lable>
+        <input type="checkbox" v-model="value" /> 활성화
+    </lable>
+    <hr>
+    <div id="hello" v-show="value">
+        <p>이메일 : {{email}}</p>
+        <p>전화번호 : {{phone}}</p>
+        <p>성별: {{sex}}</p>
+        <p>활성화 : {{value}}</p>
+    </div>
+    
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        email: '',
+        phone: '',
+        sex: '',
+        value: false
+      }
+    })    
+   </script>
+</body>    
+</html>
+

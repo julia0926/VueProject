@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 300px; text-align: center;
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa; }
+    div#time { font-size: 20pt; padding: 5px; margin: 0px auto; background: #ccc;
+      width: 200px; height: 50px; border: 1px solid black; margin-bottom: 10px;}
+      button { padding: 0.5em 1.5em; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>현재시각</h1>
+    <div id="time" v-if="showTime">{{ time }}</div>
+    <button type="button" @click="showTime=true">보이기</button>
+    <button type="button" @click="showTime=false">감추기</button>
+  </div>
+
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        time: moment().format("HH:mm:ss"),
+        showTime: true
+      },
+      mounted: function() {
+        let callback = () => {
+            this.time = moment().format("HH:mm:ss")
+            //console.log(this.time)
+        }
+        setInterval(callback, 1000);
+      },
+    })
+   </script>
+</body>
+</html>
+
+

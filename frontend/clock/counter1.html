@@ -1,0 +1,37 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    div#app { padding: 30px; margin: 30px auto; width: 300px; text-align: center;
+      border: 1px solid #ccc; box-shadow: 3px 3px 3px #aaa; }
+    div#time { font-size: 25pt; padding: 5px; margin: 0px auto; background: #ccc;
+      width: 200px; border: 1px solid black; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Counter</h1>
+    <div id="time">{{ count }}</div>
+  </div>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        count: 0
+      },
+      mounted: function(){
+        let callback = () => {
+            this.count+=1
+            if(this.count==10) clearInterval(stop)
+        }
+        let stop=setInterval(callback,1000) //1초마다 한번씩 호출 
+      }
+      //실시간으로 보여줌 
+    })
+   </script>
+</body>
+</html>
+
+
